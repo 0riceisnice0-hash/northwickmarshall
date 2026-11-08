@@ -12,7 +12,7 @@ Unsplash licence: https://unsplash.com/license
 
 ## Generated office concept
 
-`assets/office-concept.jpg` was generated using the built-in imagegen tool on 8 November 2026 and converted from the retained PNG to a web-sized JPEG. Its visible caption identifies it as an AI-generated office concept.
+`assets/office-concept.jpg` was generated using the built-in imagegen tool on 8 November 2026 and converted from the retained PNG to a web-sized JPEG. The public image has no caption; this document records its provenance.
 
 Final prompt:
 

@@ -28,7 +28,7 @@ Shared layouts, supplied text and placeholder copy live in `build.mjs`. Styles a
 - Services use large photographs and whitespace rather than bordered containers. Solid gold sections give the approach and final contact action a distinct hierarchy.
 - Square controls and consistent 1.5px arrows. No pills, numbered sections, eyebrows, decorative diagrams, shadows or gradients.
 - Gold buttons are the primary action; a navy inverse is used on gold sections. Focus states, reduced-motion support, keyboard menu dismissal, useful hover feedback and polite email-preparation feedback are included.
-- The public footer and social metadata no longer label the entire site as a prototype. Missing details remain explicit in their own sections.
+- The public site uses Latin copy for unfinished text and omits draft notices, waiting labels and placeholder captions.
 
 ## Hero reveal and service introduction
 
@@ -40,12 +40,12 @@ This effect requires no JavaScript. The text, city image and their relationship 
 
 - The headline, introduction, service summaries and detailed Diagnose paragraph come from Ben's supplied screenshots.
 - Additional paragraphs intentionally use Latin placeholder copy; this includes the Privacy policy, which is a layout draft, not a completed policy.
-- WhatsApp/phone is TBC. No invented number or dead WhatsApp link is published.
+- WhatsApp/phone is TBC internally and displays a short Latin placeholder. No invented number or dead WhatsApp link is published.
 - Ben Thompson is the only supplied team name. Three associates and all portraits await real details. Portrait placeholders are deliberately neutral.
 - The enquiry form prepares a `mailto:` message in the visitor's own email app. It does not submit data to a backend or claim an email has been sent.
 - `northwickmarshall.co.uk` is shown as the intended business domain. No CNAME or DNS change is made; the preview stays at the GitHub Pages address.
 - All pages carry `noindex,nofollow`, and robots.txt disallows crawling while this is a draft. Remove those only after approving final copy and launch details.
-- The office image is an AI-generated design concept and is visibly labelled as such. It is not a claim about a real office.
+- The office image is an AI-generated design concept. Its provenance is recorded in `ASSETS.md`; the public caption is omitted.
 - `assets/mark.svg` is a provisional vector reconstruction of the supplied screenshot emblem, pending the original logo asset.
 
 ## Deployment
