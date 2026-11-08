@@ -36,23 +36,22 @@ function serviceList(items = services, heading = 'h3') {
 const approach = () => `<section class="section approach"><div class="wrap"><div class="section-top"><h2>Clear thinking<br>Practical progress</h2><p>${lorem}</p></div><div class="approach-words">${['Diagnose', 'Design', 'Develop', 'Transform'].map(word => `<h3>${word}</h3>`).join('')}</div></div></section>`;
 const intro = (title, body = lorem, className = '') => `<section class="page-intro wrap ${className}"><h1>${title}</h1>${body ? `<p>${body}</p>` : ''}</section>`;
 
-const storyTitles = ['Find the starting point', 'Give progress a plan', 'Make change last'];
-const journey = () => `<section class="journey wrap" id="journey" aria-label="Our approach"><div class="journey-layout">
-  <div class="journey-media" aria-hidden="true">${services.map((service, index) => `<div class="journey-scene${index === 0 ? ' is-active' : ''}" data-scene="${index}"><img src="assets/${service.image}" alt="" width="1600" height="1067" loading="lazy"></div>`).join('')}</div>
-  <div class="journey-chapters">${services.map((service, index) => `<article class="story-chapter" data-chapter="${index}">
-    ${photo(service.image, service.alt)}<div class="chapter-copy"><h2>${storyTitles[index]}</h2><p>${service.summary}</p>${index === 0 ? '<ul class="chapter-details"><li>SWOT analysis</li><li>Financial health check</li><li>Feasibility report</li></ul>' : ''}${link(`${service.slug}.html`, `Explore ${service.name}`)}</div>
-  </article>`).join('')}</div>
+const support = () => `<section class="support-section"><div class="wrap">
+  <div class="support-intro"><h2>From business health checks<br> to business transformation</h2><p>A focused diagnostic, a practical delivery plan or an ongoing partnership.</p></div>
+  <div class="support-layout"><div class="support-image">${photo('workspace.jpg', 'Stock photograph of a bright meeting room with a long table and glass partitions')}</div>
+    <div class="support-services">${services.map(service => `<article class="support-service"><h3><a href="${service.slug}.html">${service.name}${arrow}</a></h3><p>${service.summary}</p></article>`).join('')}</div>
+  </div>
 </div></section>`;
 
 const pages = {};
 pages['index.html'] = {
-  title: 'Smart business support', active: '',
-  content: `<section class="story-hero" aria-labelledby="hero-title">
+  title: 'Business consultancy for SME owners', active: '',
+  content: `<section class="home-hero" aria-labelledby="hero-title">
     <div class="hero-backdrop" aria-hidden="true"><img src="assets/london-dusk.jpg" alt="" width="1800" height="1200" fetchpriority="high"></div>
-    <div class="wrap hero-composition"><div class="hero-copy"><h1 id="hero-title">Smart business<br><span class="accent">support</span></h1><p>${introduction}</p>${link('contact.html', 'Book a call', 'button')}</div><a class="scroll-cue" href="#journey"><span>See how we move your business forward</span>${arrow}</a></div>
+    <div class="wrap hero-composition"><div class="hero-copy"><h1 id="hero-title">Business consultancy<br><span class="accent">for SME owners</span></h1><p>Business health audits, practical roadmaps and long-term partnerships to help SME owners move their business forward.</p>${link('contact.html', 'Book a call', 'button')}</div></div>
   </section>
-  ${journey()}
-  <section class="section story-partnership"><div class="wrap partnership-layout"><div><h2>Progress works<br>better together</h2><p>${lorem}</p><div class="partnership-links">${link('about.html', 'About Northwick Marshall')}${link('associates.html', 'Meet our associates')}</div></div>${office()}</div></section>${cta()}`,
+  <div class="home-content">${support()}
+  <section class="section home-partnership"><div class="wrap partnership-layout"><div><h2>Northwick Marshall<br>Consulting</h2><p>${lorem}</p><div class="partnership-links">${link('about.html', 'About Northwick Marshall')}${link('associates.html', 'Meet our associates')}</div></div>${office()}</div></section>${cta()}</div>`,
 };
 pages['about.html'] = {
   title: 'About us', active: 'about',
@@ -90,7 +89,7 @@ for (const [path, page] of Object.entries(pages)) {
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#031f40"><meta name="robots" content="noindex,nofollow">
 <title>${page.title} | Northwick Marshall</title><meta name="description" content="Northwick Marshall Consulting — smart business support. Diagnose, Design & Deliver, Transform.">
 <meta property="og:title" content="${page.title} | Northwick Marshall"><meta property="og:description" content="Smart business support. Clarity, direction and a partnership for your next chapter."><meta property="og:type" content="website"><meta property="og:image" content="https://0riceisnice0-hash.github.io/northwickmarshall/assets/london-dusk.jpg">
-<link rel="icon" href="assets/mark.svg?v=2" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/styles.css?v=3"><script src="assets/site.js?v=3" defer></script>${path === 'index.html' ? '<link rel="stylesheet" href="assets/story.css?v=3"><script src="assets/story.js?v=3" defer></script>' : ''}
+<link rel="icon" href="assets/mark.svg?v=2" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/styles.css?v=3"><script src="assets/site.js?v=3" defer></script>${path === 'index.html' ? '<link rel="stylesheet" href="assets/home.css?v=4">' : ''}
 </head><body class="page-${path.replace('.html', '')}"><a class="skip-link" href="#main">Skip to content</a>${nav(page.active)}<main id="main">${page.content}</main>${footer()}</body></html>\n`);
 }
 await writeFile(new URL('.nojekyll', out), '');
