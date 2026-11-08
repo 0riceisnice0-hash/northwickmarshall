@@ -18,7 +18,7 @@ const services = [
 ];
 
 function brand() {
-  return `<a href="index.html" class="brand" aria-label="Northwick Marshall home"><img src="assets/mark.svg" width="65" height="44" alt=""><span>Northwick Marshall<small>Consulting</small></span></a>`;
+  return `<a href="index.html" class="brand" aria-label="Northwick Marshall home"><img src="assets/mark.svg?v=2" width="65" height="44" alt=""><span>Northwick Marshall<small>Consulting</small></span></a>`;
 }
 function nav(active) {
   const items = [['about', 'About'], ['services', 'Services'], ['associates', 'Associates'], ['contact', 'Contact']];
@@ -80,7 +80,7 @@ for (const [path, page] of Object.entries(pages)) {
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#031f40"><meta name="robots" content="noindex,nofollow">
 <title>${page.title} | Northwick Marshall</title><meta name="description" content="Northwick Marshall Consulting — smart business support. Diagnose, Design & Deliver, Transform.">
 <meta property="og:title" content="${page.title} | Northwick Marshall"><meta property="og:description" content="Smart business support. Clarity, direction and a partnership for your next chapter."><meta property="og:type" content="website"><meta property="og:image" content="https://0riceisnice0-hash.github.io/northwickmarshall/assets/london-dusk.jpg">
-<link rel="icon" href="assets/mark.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/styles.css?v=2"><script src="assets/site.js?v=2" defer></script>
+<link rel="icon" href="assets/mark.svg?v=2" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/styles.css?v=2"><script src="assets/site.js?v=2" defer></script>
 </head><body class="page-${path.replace('.html', '')}"><a class="skip-link" href="#main">Skip to content</a>${nav(page.active)}<main id="main">${page.content}</main>${footer()}</body></html>\n`);
 }
 await writeFile(new URL('.nojekyll', out), '');
