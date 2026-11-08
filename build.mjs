@@ -27,7 +27,7 @@ function nav(active) {
 function footer() {
   return `<footer class="footer"><div class="wrap footer-main">${brand()}<div class="footer-links"><a href="about.html">About</a><a href="services.html">Services</a><a href="associates.html">Associates</a><a href="contact.html">Contact</a></div><a class="footer-email" href="mailto:northwickmarshall@gmail.com">northwickmarshall@gmail.com</a></div><div class="wrap footer-bottom"><span>© ${new Date().getFullYear()} Northwick Marshall</span><span>northwickmarshall.co.uk</span><a href="privacy.html">Privacy policy</a></div></footer>`;
 }
-const cta = () => `<section class="cta"><div class="wrap cta-inner"><h2>Let’s move your<br>business forward</h2>${link('contact.html', 'Book a call', 'button button-dark')}</div></section>`;
+const cta = () => `<section class="cta"><div class="wrap cta-inner"><h2>Let’s move your<br> business forward</h2>${link('contact.html', 'Book a call', 'button button-dark')}</div></section>`;
 const office = () => `<figure class="office-image">${photo('office-concept.jpg', 'AI visualisation of a Northwick Marshall meeting room with brass signage on a navy wall')}<figcaption>AI-generated office visualisation</figcaption></figure>`;
 
 function serviceList(items = services, heading = 'h3') {
@@ -36,13 +36,23 @@ function serviceList(items = services, heading = 'h3') {
 const approach = () => `<section class="section approach"><div class="wrap"><div class="section-top"><h2>Clear thinking<br>Practical progress</h2><p>${lorem}</p></div><div class="approach-words">${['Diagnose', 'Design', 'Develop', 'Transform'].map(word => `<h3>${word}</h3>`).join('')}</div></div></section>`;
 const intro = (title, body = lorem, className = '') => `<section class="page-intro wrap ${className}"><h1>${title}</h1>${body ? `<p>${body}</p>` : ''}</section>`;
 
+const storyTitles = ['Find the starting point', 'Give progress a plan', 'Make change last'];
+const journey = () => `<section class="journey wrap" id="journey" aria-label="Our approach"><div class="journey-layout">
+  <div class="journey-media" aria-hidden="true">${services.map((service, index) => `<div class="journey-scene${index === 0 ? ' is-active' : ''}" data-scene="${index}"><img src="assets/${service.image}" alt="" width="1600" height="1067" loading="lazy"></div>`).join('')}</div>
+  <div class="journey-chapters">${services.map((service, index) => `<article class="story-chapter" data-chapter="${index}">
+    ${photo(service.image, service.alt)}<div class="chapter-copy"><h2>${storyTitles[index]}</h2><p>${service.summary}</p>${index === 0 ? '<ul class="chapter-details"><li>SWOT analysis</li><li>Financial health check</li><li>Feasibility report</li></ul>' : ''}${link(`${service.slug}.html`, `Explore ${service.name}`)}</div>
+  </article>`).join('')}</div>
+</div></section>`;
+
 const pages = {};
 pages['index.html'] = {
   title: 'Smart business support', active: '',
-  content: `<section class="hero"><div class="wrap hero-content"><h1><span>Smart business</span><span class="accent">support</span></h1><div class="hero-bottom"><p>${introduction}</p>${link('contact.html', 'Book a call', 'button')}</div></div><div class="hero-image">${photo('london-dusk.jpg', 'The City of London skyline across the Thames at dusk', true)}</div></section>
-  <section class="section services-section" id="services"><div class="wrap"><div class="section-top"><h2>Support for your<br>next chapter</h2>${link('services.html', 'Explore our services')}</div>${serviceList()}</div></section>
-  <section class="section about-section"><div class="wrap"><div class="about-heading"><h2>Working with you<br>Moving forward</h2><div><p>${longer}</p>${link('about.html', 'About Northwick Marshall')}</div></div>${office()}</div></section>${approach()}
-  <section class="section team-intro"><div class="wrap team-intro-layout"><h2>People behind<br>your progress</h2><div><p>${lorem}</p>${link('associates.html', 'Meet our associates')}</div></div></section>${cta()}`,
+  content: `<section class="story-hero" aria-labelledby="hero-title">
+    <div class="hero-backdrop" aria-hidden="true"><img src="assets/london-dusk.jpg" alt="" width="1800" height="1200" fetchpriority="high"></div>
+    <div class="wrap hero-composition"><div class="hero-copy"><h1 id="hero-title">Smart business<br><span class="accent">support</span></h1><p>${introduction}</p>${link('contact.html', 'Book a call', 'button')}</div><a class="scroll-cue" href="#journey"><span>See how we move your business forward</span>${arrow}</a></div>
+  </section>
+  ${journey()}
+  <section class="section story-partnership"><div class="wrap partnership-layout"><div><h2>Progress works<br>better together</h2><p>${lorem}</p><div class="partnership-links">${link('about.html', 'About Northwick Marshall')}${link('associates.html', 'Meet our associates')}</div></div>${office()}</div></section>${cta()}`,
 };
 pages['about.html'] = {
   title: 'About us', active: 'about',
@@ -80,7 +90,7 @@ for (const [path, page] of Object.entries(pages)) {
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#031f40"><meta name="robots" content="noindex,nofollow">
 <title>${page.title} | Northwick Marshall</title><meta name="description" content="Northwick Marshall Consulting — smart business support. Diagnose, Design & Deliver, Transform.">
 <meta property="og:title" content="${page.title} | Northwick Marshall"><meta property="og:description" content="Smart business support. Clarity, direction and a partnership for your next chapter."><meta property="og:type" content="website"><meta property="og:image" content="https://0riceisnice0-hash.github.io/northwickmarshall/assets/london-dusk.jpg">
-<link rel="icon" href="assets/mark.svg?v=2" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/styles.css?v=2"><script src="assets/site.js?v=2" defer></script>
+<link rel="icon" href="assets/mark.svg?v=2" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/styles.css?v=3"><script src="assets/site.js?v=3" defer></script>${path === 'index.html' ? '<link rel="stylesheet" href="assets/story.css?v=3"><script src="assets/story.js?v=3" defer></script>' : ''}
 </head><body class="page-${path.replace('.html', '')}"><a class="skip-link" href="#main">Skip to content</a>${nav(page.active)}<main id="main">${page.content}</main>${footer()}</body></html>\n`);
 }
 await writeFile(new URL('.nojekyll', out), '');

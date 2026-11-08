@@ -24,11 +24,17 @@ Shared layouts, supplied text and placeholder copy live in `build.mjs`. Styles a
 
 - Deep navy `#031f40`, gold `#dbb93d`, and warm white `#f5f3e9`. Three colours carry the whole interface.
 - Upright DM Sans for all interface typography; the original-style serif wordmark is retained. No italics, monospaced UI or negative tracking.
-- Oversized responsive headings, a shared content width, consistent spacing, panoramic photography and editorial layouts.
+- Measured responsive headings, a shared content width and consistent spacing. The homepage uses an image-backed hero and a scroll narrative rather than a separate oversized photograph.
 - Services use large photographs and whitespace rather than bordered containers. Solid gold sections give the approach and final contact action a distinct hierarchy.
 - Square controls and consistent 1.5px arrows. No pills, numbered sections, eyebrows, decorative diagrams, shadows or gradients.
 - Gold buttons are the primary action; a navy inverse is used on gold sections. Focus states, reduced-motion support, keyboard menu dismissal, useful hover feedback and polite email-preparation feedback are included.
 - The public footer and social metadata no longer label the entire site as a prototype. Missing details remain explicit in their own sections.
+
+## Scroll narrative
+
+The homepage moves through Diagnose, Design & Deliver and Transform, then into the people behind the partnership and a contact action. `assets/story.css` and `assets/story.js` provide a smaller image-backed hero, restrained parallax and a sticky image that changes as each chapter's text enters the reading area. The browser's native scrolling and links are preserved.
+
+The motion code batches geometry reads and transform writes in scroll-triggered animation frames. Reduced-motion preferences disable parallax and crossfades. Without JavaScript each chapter displays its own photograph in normal document flow. On phones the sticky image uses a short band above the story text.
 
 ## Prototype status
 

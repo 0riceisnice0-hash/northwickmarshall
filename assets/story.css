@@ -1,0 +1,85 @@
+/* A normal document scroll drives the imagery; no scroll interception. */
+.page-index .header { position: absolute; inset: 0 0 auto; background: transparent; }
+.page-index .header:has(nav.is-open) { background: var(--navy); }
+.story-hero { position: relative; isolation: isolate; overflow: hidden; height: min(760px, 100svh); min-height: 640px; background: var(--navy); }
+.hero-backdrop { position: absolute; z-index: -2; inset: -12% 0; }
+.hero-backdrop img { height: 100%; width: 100%; object-position: center 54%; transform: translate3d(0, var(--hero-shift, 0px), 0); will-change: transform; }
+.story-hero::before { content: ''; position: absolute; z-index: -1; inset: 0; background: rgb(3 31 64 / 65%); }
+.hero-composition { height: 100%; position: relative; display: flex; align-items: center; padding-top: 92px; padding-bottom: 95px; }
+.hero-copy { max-width: 550px; }
+.story-hero h1 { font-size: clamp(48px, 5.1vw, 76px); line-height: 1.08; font-weight: 500; }
+.hero-copy > p { max-width: 470px; margin-top: 26px; font-size: 17px; line-height: 1.7; }
+.hero-copy .button { margin-top: 29px; min-height: 56px; padding: 14px 22px; gap: 40px; }
+.scroll-cue { position: absolute; bottom: 35px; left: 0; display: flex; gap: 20px; align-items: center; min-height: 44px; font-size: 13px; }
+.scroll-cue svg { width: 20px; transform: rotate(90deg); }
+.scroll-cue:hover { color: var(--gold); }
+
+/* Without scripting the chapters and their own photographs remain readable. */
+.journey { padding-block: 80px; }
+.journey-media { display: none; }
+.story-chapter { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 70px; padding-block: 50px; }
+.story-chapter > img { height: 460px; }
+.chapter-copy h2 { font-size: clamp(34px, 3.5vw, 52px); line-height: 1.13; max-width: 11ch; }
+.chapter-copy > p { margin-top: 26px; font-size: 18px; max-width: 33ch; }
+.chapter-copy .text-link { margin-top: 26px; color: var(--gold); }
+.chapter-details { list-style: none; margin: 25px 0 0; padding: 0; font-size: 14px; line-height: 2; }
+.chapter-details li::before { content: '—'; margin-right: 12px; color: var(--gold); }
+.has-scroll-story .journey-layout { display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(50px, 8vw, 130px); align-items: start; }
+.has-scroll-story .journey-media { display: block; position: sticky; top: 40px; height: min(700px, calc(100svh - 80px)); overflow: hidden; }
+.journey-scene { position: absolute; inset: 0; opacity: 0; transition: opacity .65s ease; }
+.journey-scene.is-active { opacity: 1; }
+.journey-scene img { height: 100%; width: 100%; object-fit: cover; transform: translate3d(0, var(--scene-shift, 0px), 0) scale(1.08); will-change: transform; }
+.has-scroll-story .story-chapter { display: flex; align-items: center; min-height: min(700px, 92svh); padding-block: 70px; }
+.has-scroll-story .story-chapter > img { display: none; }
+.story-partnership { padding-top: 40px; }
+.partnership-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(50px, 7vw, 110px); align-items: center; }
+.partnership-layout h2 { font-size: clamp(34px, 3.4vw, 50px); }
+.partnership-layout p { margin-top: 26px; max-width: 38ch; }
+.partnership-links { display: flex; flex-direction: column; align-items: start; gap: 4px; margin-top: 22px; }
+.partnership-layout .office-image img { aspect-ratio: 1.12; object-position: center; }
+.page-index .cta { padding-block: 75px; }
+.page-index .cta h2 { font-size: clamp(36px, 4vw, 56px); }
+
+@media (max-width: 850px) {
+  .hero-composition { padding-top: 90px; }
+  .story-hero { min-height: 620px; height: min(720px, 100svh); }
+  .story-hero h1 { font-size: 58px; }
+  .has-scroll-story .journey-layout { column-gap: 40px; }
+  .chapter-copy h2 { font-size: 36px; }
+  .chapter-copy > p { font-size: 16px; }
+  .has-scroll-story .journey-media { top: 30px; height: calc(100svh - 60px); max-height: 600px; }
+  .has-scroll-story .story-chapter { min-height: 90svh; }
+  .partnership-layout { gap: 40px; }
+}
+
+@media (max-width: 600px) {
+  .story-hero { min-height: 640px; height: min(730px, 100svh); }
+  .hero-composition { padding-top: 100px; padding-bottom: 100px; }
+  .story-hero h1 { font-size: clamp(40px, 10.7vw, 58px); }
+  .hero-copy > p { font-size: 16px; margin-top: 24px; max-width: 32ch; }
+  .hero-copy .button { margin-top: 26px; }
+  .hero-backdrop img { object-position: 60% center; }
+  .story-hero::before { background: rgb(3 31 64 / 72%); }
+  .scroll-cue { bottom: 24px; max-width: 280px; font-size: 12px; }
+  .journey { padding-block: 40px; }
+  .story-chapter { grid-template-columns: 1fr; gap: 32px; padding-block: 36px; }
+  .story-chapter > img { height: 300px; }
+  .has-scroll-story .journey-layout { display: block; }
+  .has-scroll-story .journey-media { top: 0; z-index: 2; height: 30svh; min-height: 190px; max-height: 260px; }
+  .has-scroll-story .story-chapter { min-height: 62svh; padding-block: 52px; }
+  .chapter-copy h2 { max-width: 12ch; font-size: 36px; }
+  .chapter-copy > p { max-width: 34ch; }
+  .chapter-details { margin-top: 22px; }
+  .journey-scene img { object-position: center 45%; }
+  .story-partnership { padding-top: 40px; }
+  .partnership-layout { grid-template-columns: 1fr; gap: 40px; }
+  .partnership-layout h2 { font-size: 36px; }
+  .partnership-layout .office-image img { aspect-ratio: 1.25; }
+  .page-index .cta { padding-block: 60px; }
+  .page-index .cta h2 { font-size: 36px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-backdrop img, .journey-scene img { transform: none !important; will-change: auto; }
+  .journey-scene { transition: none; }
+}
