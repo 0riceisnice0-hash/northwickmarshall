@@ -8,7 +8,7 @@ for(const page of pages){
  if((html.match(/<h1[ >]/g)||[]).length!==1)errors.push(`${page}: expected one main heading`);
  if(!html.includes('name="robots" content="noindex,nofollow"'))errors.push(`${page}: missing prototype noindex`);
  for(const match of html.matchAll(/(?:href|src)="([^"#]+)(?:#[^"]*)?"/g)){
-  const target=match[1];if(/^(https?:|mailto:|tel:|data:)/.test(target))continue;
+  const target=match[1].split('?')[0];if(/^(https?:|mailto:|tel:|data:)/.test(target))continue;
   try{await access(resolve(dirname(resolve(root,page)),target));}catch{errors.push(`${page}: missing ${target}`);}
  }
  for(const img of html.matchAll(/<img\b[^>]*>/g))if(!/alt="[^"]*"/.test(img[0]))errors.push(`${page}: missing image alt text`);

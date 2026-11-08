@@ -1,6 +1,6 @@
 # Northwick Marshall
 
-First-stage design prototype for Northwick Marshall Consulting. Built as a dependency-free static website, automatically deployed to GitHub Pages from `main`.
+Northwick Marshall Consulting website. A bold navy-and-gold visual direction with a dependency-free static build, automatically deployed to GitHub Pages from `main`. Final business copy and team assets are still in progress.
 
 ## Preview and checks
 
@@ -22,11 +22,13 @@ Shared layouts, supplied text and placeholder copy live in `build.mjs`. Styles a
 
 ## Design system
 
-- Navy `#062444`, gold `#d1ad43`, warm white `#f7f6f0`, neutral surface `#eeeee5`, body text `#445465`.
-- Upright Libre Caslon Display for main headings; DM Sans for body, navigation and controls. No italics or monospaced UI.
-- Responsive heading sizes, a shared content width, a shared section spacing scale and two-column editorial layouts.
-- Solid backgrounds, square controls, consistent 1.5px arrow strokes. No pills, numbered sections, bordered cards, decorative diagrams or gradients.
-- Gold buttons are the primary action. Focus states, reduced-motion support, keyboard menu dismissal and polite email-preparation feedback are included.
+- Deep navy `#031f40`, gold `#dbb93d`, and warm white `#f5f3e9`. Three colours carry the whole interface.
+- Upright DM Sans for all interface typography; the original-style serif wordmark is retained. No italics, monospaced UI or negative tracking.
+- Oversized responsive headings, a shared content width, consistent spacing, panoramic photography and editorial layouts.
+- Services use large photographs and whitespace rather than bordered containers. Solid gold sections give the approach and final contact action a distinct hierarchy.
+- Square controls and consistent 1.5px arrows. No pills, numbered sections, eyebrows, decorative diagrams, shadows or gradients.
+- Gold buttons are the primary action; a navy inverse is used on gold sections. Focus states, reduced-motion support, keyboard menu dismissal, useful hover feedback and polite email-preparation feedback are included.
+- The public footer and social metadata no longer label the entire site as a prototype. Missing details remain explicit in their own sections.
 
 ## Prototype status
 
