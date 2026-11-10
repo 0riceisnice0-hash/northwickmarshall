@@ -18,7 +18,7 @@ Home, About, Services, Diagnose, Design & Deliver, Partner and Transform, Associ
 
 ## Content editing
 
-Shared layouts, supplied text, people and placeholder copy live in `build.mjs`. Shared styles and interaction code live in `assets/styles.css` and `assets/site.js`; homepage layout and footer measurement live in `assets/home.css` and `assets/home.js`; the portrait gallery and native biography dialogs use `assets/people.css` and `assets/people.js`. Run the build after editing; `dist/` is generated and not committed.
+Shared layouts, supplied text, people and placeholder copy live in `build.mjs`. Shared styles and interaction code live in `assets/styles.css` and `assets/site.js`; homepage layout and footer measurement live in `assets/home.css` and `assets/home.js`; the portrait gallery and inline biographies use `assets/people.css` and `assets/people.js`. Run the build after editing; `dist/` is generated and not committed.
 
 ## Design system
 
@@ -32,13 +32,13 @@ Shared layouts, supplied text, people and placeholder copy live in `build.mjs`. 
 
 ## Stacked homepage sections
 
-The hero, service introduction and company section each occupy exactly one stable viewport. CSS sticky positioning lets each following section rise over the previous one. The yellow contact section fills the viewport remaining after the actual footer height, so the ending always covers the previous section completely. On standard desktop proportions this is a 75% contact / 25% footer split.
+The hero, service introduction and company section each occupy exactly one stable viewport. CSS sticky positioning lets each following section rise over the previous one. The hero transition starts immediately; the services and company panels each have a short, responsive scroll runway after settling into place, giving time to read before the next panel enters. The yellow contact section fills the viewport remaining after the actual footer height, so the ending always covers the previous section completely. On standard desktop proportions this is a 75% contact / 25% footer split.
 
 `assets/home.js` measures the footer when its size changes. Phone layouts prioritise the supplied text and omit the supporting stock photos to fit the viewport. Overflow remains scrollable on exceptionally short viewports, so content is never clipped. Scrolling is not intercepted and photographs remain static.
 
 ## Associates experience
 
-The associates page uses a staggered, monochrome portrait composition with colour returning on hover or keyboard focus. Selecting a person opens their full supplied biography in a native dialog. Escape, the close control and backdrop dismissal are supported; focus returns to the selected portrait. Without JavaScript, the full profiles remain in normal document flow. Direct links to each person's original hash also open their biography.
+The associates page uses a staggered, monochrome portrait composition with colour returning on hover or keyboard focus. Hovering, focusing or tapping a portrait updates the introduction directly beneath the gallery. An inline disclosure contains the full supplied biography, with no pop-up or scroll lock. Without JavaScript, all biographies remain available in normal document flow. Direct links select the corresponding person's inline profile.
 
 ## Prototype status
 

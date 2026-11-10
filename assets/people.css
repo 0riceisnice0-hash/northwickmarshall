@@ -14,23 +14,26 @@
 .person-name svg { color: var(--gold); width: 23px; height: 23px; transition: transform .2s; }
 .person-link:hover svg { transform: translateX(4px); }
 .person-link > p { margin-top: 9px; font-size: 13px; line-height: 1.6; }
-.people-interactive .people-fallback { display: none; }
-.person-dialog { width: min(1120px, calc(100% - 56px)); max-height: 90svh; padding: 0; border: 0; border-radius: 0; color: var(--navy); background: var(--paper); overflow: hidden; }
-.person-dialog::backdrop { background: rgb(3 31 64 / 90%); }
-.person-dialog-layout { display: grid; grid-template-columns: .78fr 1.22fr; max-height: 90svh; }
-.dialog-photo { overflow: hidden; background: var(--navy); }
-.dialog-photo img { width: 100%; height: 100%; min-height: 540px; object-fit: cover; object-position: center 35%; filter: grayscale(1); }
-.dialog-bio { padding: 65px 50px 50px; overflow-y: auto; overscroll-behavior: contain; }
-.dialog-bio h2 { font-size: clamp(30px, 3vw, 44px); line-height: 1.12; margin-bottom: 26px; }
-.dialog-bio p { font-size: 16px; line-height: 1.8; }
-.dialog-bio p + p { margin-top: 20px; }
-.dialog-close { position: absolute; right: 14px; top: 14px; z-index: 2; display: grid; place-items: center; border: 0; background: var(--navy); color: var(--paper); width: 42px; height: 42px; }
-.dialog-close svg { width: 23px; height: 23px; }
-.dialog-close:hover { color: var(--gold); }
+.people-stage { min-width: 0; }
+.people-heading { align-self: start; padding-top: 85px; }
+.people-biographies { margin-top: 36px; min-height: 220px; }
+.person-biography { scroll-margin-top: 130px; }
+.person-biography + .person-biography { margin-top: 45px; }
+.people-interactive .person-biography + .person-biography { margin-top: 0; }
+.person-biography[hidden] { display: none; }
+.person-biography h2 { font-size: 26px; line-height: 1.2; margin-bottom: 14px; }
+.person-biography > p { font-size: 16px; max-width: 65ch; }
+.person-biography details { margin-top: 18px; }
+.person-biography summary { cursor: pointer; width: fit-content; font-size: 14px; color: var(--gold); padding-block: 6px; }
+.person-full-bio { padding-top: 18px; max-width: 65ch; }
+.person-full-bio p { font-size: 16px; }
+.person-link.is-selected .person-name { color: var(--gold); }
+.person-name svg { rotate: 90deg; }
+.person-link:hover svg { transform: translateX(4px); }
 
 @media (max-width: 1100px) {
   .people-hero { grid-template-columns: 1fr; gap: 45px; }
-  .people-heading { display: flex; gap: 70px; align-items: end; justify-content: space-between; }
+  .people-heading { padding-top: 0; display: flex; gap: 70px; align-items: end; justify-content: space-between; }
   .people-heading h1 br { display: none; }
   .people-heading h1 { font-size: 56px; }
   .people-heading p { max-width: 34ch; margin-top: 0; }
@@ -48,11 +51,7 @@
   .person-link:nth-child(n) { margin-top: 0; }
   .person-frame { height: min(47svh, 430px); min-height: 300px; }
   .person-name h2 { font-size: 25px; }
-  .person-dialog { width: calc(100% - 28px); }
-  .person-dialog-layout { grid-template-columns: 1fr; grid-template-rows: min(25svh, 220px) minmax(0, 1fr); height: 90svh; }
-  .dialog-photo img { min-height: 0; object-position: center 10%; }
-  .dialog-photo.associate-image-cate-hutchins-emery img { transform: scale(1.2); transform-origin: center 60%; }
-  .dialog-bio { padding: 30px 24px; }
-  .dialog-bio h2 { font-size: 30px; }
-  .dialog-bio p { font-size: 15px; }
+  .people-biographies { margin-top: 22px; min-height: 260px; }
+  .person-biography h2 { font-size: 25px; }
+  .person-biography > p, .person-full-bio p { font-size: 15px; }
 }

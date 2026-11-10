@@ -1,29 +1,33 @@
 const personLinks = [...document.querySelectorAll('[data-person]')];
-const personDialogs = [...document.querySelectorAll('.person-dialog')];
-if (personDialogs.length && typeof personDialogs[0].showModal === 'function') {
-  let opener = null;
-  let previousOverflow = '';
-  personLinks.forEach(link => link.addEventListener('click', event => {
-    const dialog = document.querySelector(`#dialog-${link.dataset.person}`);
-    if (!dialog) return;
-    event.preventDefault();
-    opener = link;
-    previousOverflow = document.documentElement.style.overflow;
-    document.documentElement.style.overflow = 'hidden';
-    dialog.showModal();
-  }));
-  personDialogs.forEach(dialog => {
-    dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
-    dialog.addEventListener('click', event => {
-      const rect = dialog.getBoundingClientRect();
-      if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
+const biographies = [...document.querySelectorAll('.person-biography')];
+
+function selectPerson(slug) {
+  if (!biographies.some(bio => bio.id === slug)) return;
+  biographies.forEach(bio => { bio.hidden = bio.id !== slug; });
+  personLinks.forEach(link => {
+    const selected = link.dataset.person === slug;
+    link.classList.toggle('is-selected', selected);
+    if (selected) link.setAttribute('aria-current', 'true');
+    else link.removeAttribute('aria-current');
+  });
+}
+
+if (personLinks.length && biographies.length) {
+  document.body.classList.add('people-interactive');
+  personLinks.forEach(link => {
+    link.addEventListener('pointerenter', event => {
+      if (event.pointerType !== 'touch') selectPerson(link.dataset.person);
     });
-    dialog.addEventListener('close', () => {
-      document.documentElement.style.overflow = previousOverflow;
-      opener?.focus({preventScroll:true});
+    link.addEventListener('focus', () => selectPerson(link.dataset.person));
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      selectPerson(link.dataset.person);
     });
   });
-  document.body.classList.add('people-interactive');
-  const linkedPerson = personLinks.find(link => `#${link.dataset.person}` === window.location.hash);
-  linkedPerson?.click();
+  const selectFromHash = () => {
+    const slug = window.location.hash.slice(1);
+    selectPerson(biographies.some(bio => bio.id === slug) ? slug : personLinks[0].dataset.person);
+  };
+  selectFromHash();
+  window.addEventListener('hashchange', selectFromHash);
 }
