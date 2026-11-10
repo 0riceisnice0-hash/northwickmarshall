@@ -1,9 +1,17 @@
 const personLinks = [...document.querySelectorAll('[data-person]')];
 const biographies = [...document.querySelectorAll('.person-biography')];
+let selectedPerson = null;
 
 function selectPerson(slug) {
-  if (!biographies.some(bio => bio.id === slug)) return;
-  biographies.forEach(bio => { bio.hidden = bio.id !== slug; });
+  if (selectedPerson === slug || !biographies.some(bio => bio.id === slug)) return;
+  selectedPerson = slug;
+  biographies.forEach(bio => {
+    const selected = bio.id === slug;
+    bio.classList.toggle('is-active', selected);
+    bio.inert = !selected;
+    if (selected) bio.removeAttribute('aria-hidden');
+    else bio.setAttribute('aria-hidden', 'true');
+  });
   personLinks.forEach(link => {
     const selected = link.dataset.person === slug;
     link.classList.toggle('is-selected', selected);

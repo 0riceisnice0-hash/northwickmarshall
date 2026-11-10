@@ -5,7 +5,7 @@
 .person-link { display: block; min-width: 0; }
 .person-link:nth-child(1) { margin-top: 85px; }
 .person-link:nth-child(3) { margin-top: 45px; }
-.person-frame { overflow: hidden; height: clamp(290px, 38svh, 510px); background: var(--paper); }
+.person-frame { overflow: hidden; height: clamp(290px, 38svh, 510px); background: var(--paper); transition: transform .3s ease; }
 .person-frame img { height: 100%; width: 100%; object-fit: cover; object-position: center 35%; filter: grayscale(1); transition: filter .3s ease, transform .3s ease; }
 .person-frame.associate-image-cate-hutchins-emery img { transform: scale(1.2); transform-origin: center 65%; }
 .person-link:hover .person-frame img, .person-link:focus-visible .person-frame img { filter: grayscale(0); }
@@ -16,18 +16,23 @@
 .person-link > p { margin-top: 9px; font-size: 13px; line-height: 1.6; }
 .people-stage { min-width: 0; }
 .people-heading { align-self: start; padding-top: 85px; }
-.people-biographies { margin-top: 36px; min-height: 220px; }
-.person-biography { scroll-margin-top: 130px; }
+.people-biographies { margin-top: 36px; }
+.person-biography { scroll-margin-top: 130px; max-width: 68ch; }
 .person-biography + .person-biography { margin-top: 45px; }
-.people-interactive .person-biography + .person-biography { margin-top: 0; }
-.person-biography[hidden] { display: none; }
-.person-biography h2 { font-size: 26px; line-height: 1.2; margin-bottom: 14px; }
-.person-biography > p { font-size: 16px; max-width: 65ch; }
-.person-biography details { margin-top: 18px; }
-.person-biography summary { cursor: pointer; width: fit-content; font-size: 14px; color: var(--gold); padding-block: 6px; }
-.person-full-bio { padding-top: 18px; max-width: 65ch; }
-.person-full-bio p { font-size: 16px; }
+.people-interactive .people-biographies { display: grid; align-items: start; }
+.people-interactive .person-biography { grid-area: 1 / 1; margin-top: 0; }
+.people-interactive .person-biography:not(.is-active) { visibility: hidden; pointer-events: none; }
+.people-interactive .person-biography.is-active { animation: biography-arrive .3s ease-out; }
+.person-biography h2 { font-size: 28px; line-height: 1.2; margin-bottom: 22px; color: var(--gold); }
+.person-biography p { font-size: 16px; line-height: 1.8; }
+.person-biography p + p { margin-top: 20px; }
 .person-link.is-selected .person-name { color: var(--gold); }
+.person-link.is-selected .person-frame { transform: translateY(-6px); }
+.person-link.is-selected .person-frame img { filter: grayscale(0); }
+@keyframes biography-arrive {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 .person-name svg { rotate: 90deg; }
 .person-link:hover svg { transform: translateX(4px); }
 
@@ -51,7 +56,9 @@
   .person-link:nth-child(n) { margin-top: 0; }
   .person-frame { height: min(47svh, 430px); min-height: 300px; }
   .person-name h2 { font-size: 25px; }
-  .people-biographies { margin-top: 22px; min-height: 260px; }
+  .people-biographies { margin-top: 22px; }
+  .people-interactive .people-biographies { display: block; }
+  .people-interactive .person-biography:not(.is-active) { display: none; }
   .person-biography h2 { font-size: 25px; }
-  .person-biography > p, .person-full-bio p { font-size: 15px; }
+  .person-biography p { font-size: 15px; }
 }
