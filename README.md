@@ -1,6 +1,6 @@
 # Northwick Marshall
 
-Northwick Marshall Consulting website. A bold navy-and-gold visual direction with a dependency-free static build, automatically deployed to GitHub Pages from `main`. Final business copy and team assets are still in progress.
+Northwick Marshall Consulting website. A navy-and-gold visual direction with a dependency-free static build, automatically deployed to GitHub Pages from `main`. Ben's 10 November feedback, company copy, and the supplied portraits and biographies for Ben, Rebecca and Cate are incorporated.
 
 ## Preview and checks
 
@@ -14,11 +14,11 @@ Local preview: http://127.0.0.1:4173/northwickmarshall/
 
 ## Pages
 
-Home, About, Services, Diagnose, Design & Deliver, Transform, Associates, Contact, Privacy and a custom 404.
+Home, About, Services, Diagnose, Design & Deliver, Partner and Transform, Associates, Contact, Privacy and a custom 404. The renamed service retains `transform.html` for existing links.
 
 ## Content editing
 
-Shared layouts, supplied text and placeholder copy live in `build.mjs`. Styles and interaction code live in `assets/styles.css` and `assets/site.js`. Run the build after editing; `dist/` is generated and not committed.
+Shared layouts, supplied text, people and placeholder copy live in `build.mjs`. Shared styles and interaction code live in `assets/styles.css` and `assets/site.js`; homepage layout and footer measurement live in `assets/home.css` and `assets/home.js`; the portrait gallery and native biography dialogs use `assets/people.css` and `assets/people.js`. Run the build after editing; `dist/` is generated and not committed.
 
 ## Design system
 
@@ -30,23 +30,27 @@ Shared layouts, supplied text and placeholder copy live in `build.mjs`. Styles a
 - Gold buttons are the primary action; a navy inverse is used on gold sections. Focus states, reduced-motion support, keyboard menu dismissal, useful hover feedback and polite email-preparation feedback are included.
 - The public site uses Latin copy for unfinished text and omits draft notices, waiting labels and placeholder captions.
 
-## Hero reveal and service introduction
+## Stacked homepage sections
 
-`assets/home.css` holds the complete hero stationary using CSS sticky positioning. A warm-white section scrolls up over the hero and introduces the actual services: Diagnose, Design & Deliver and Transform. The service descriptions are the supplied copy. There is no scroll prompt, image parallax, pinned journey image, scene switching or scroll interception.
+The hero, service introduction and company section each occupy exactly one stable viewport. CSS sticky positioning lets each following section rise over the previous one. The yellow contact section fills the viewport remaining after the actual footer height, so the ending always covers the previous section completely. On standard desktop proportions this is a 75% contact / 25% footer split.
 
-This effect requires no JavaScript. The text, city image and their relationship remain fixed while the following content rises. The service section uses static photography, direct service names and normal links, with a simpler vertical arrangement on phones.
+`assets/home.js` measures the footer when its size changes. Phone layouts prioritise the supplied text and omit the supporting stock photos to fit the viewport. Overflow remains scrollable on exceptionally short viewports, so content is never clipped. Scrolling is not intercepted and photographs remain static.
+
+## Associates experience
+
+The associates page uses a staggered, monochrome portrait composition with colour returning on hover or keyboard focus. Selecting a person opens their full supplied biography in a native dialog. Escape, the close control and backdrop dismissal are supported; focus returns to the selected portrait. Without JavaScript, the full profiles remain in normal document flow. Direct links to each person's original hash also open their biography.
 
 ## Prototype status
 
-- The headline, introduction, service summaries and detailed Diagnose paragraph come from Ben's supplied screenshots.
+- The headline, introduction, company copy and associate biographies use Ben's supplied feedback. Service summaries and the detailed Diagnose paragraph originate in the supplied screenshots. The public copy spells out small and medium businesses rather than using the acronym.
 - Additional paragraphs intentionally use Latin placeholder copy; this includes the Privacy policy, which is a layout draft, not a completed policy.
 - WhatsApp/phone is TBC internally and displays a short Latin placeholder. No invented number or dead WhatsApp link is published.
-- Ben Thompson is the only supplied team name. Three associates and all portraits await real details. Portrait placeholders are deliberately neutral.
+- Ben Thompson, Rebecca Wood and Cate Hutchins-Emery have complete supplied profiles. Only these three named people appear; the extra unnamed placeholder was removed.
 - The enquiry form prepares a `mailto:` message in the visitor's own email app. It does not submit data to a backend or claim an email has been sent.
 - `northwickmarshall.co.uk` is shown as the intended business domain. No CNAME or DNS change is made; the preview stays at the GitHub Pages address.
 - All pages carry `noindex,nofollow`, and robots.txt disallows crawling while this is a draft. Remove those only after approving final copy and launch details.
 - The office image is an AI-generated design concept. Its provenance is recorded in `ASSETS.md`; the public caption is omitted.
-- `assets/mark.svg` is a provisional vector reconstruction of the supplied screenshot emblem, pending the original logo asset.
+- The SVG logo follows the separated outer diamonds and interwoven gaps in the original screenshot, with stronger strokes. An original vector master can replace it if supplied later.
 
 ## Deployment
 
@@ -54,6 +58,6 @@ This effect requires no JavaScript. The text, city image and their relationship 
 
 ## Before final launch
 
-Replace Latin copy and the privacy draft; confirm service details; supply original logo, four portraits, bios and WhatsApp number; decide whether to add LinkedIn; approve contact delivery; connect the business domain and update final metadata.
+Replace remaining Latin copy and the privacy draft; confirm service details and WhatsApp number; decide whether to add LinkedIn; approve contact delivery; connect the business domain and update final metadata.
 
 See `ASSETS.md` for image provenance and the office-generation prompt.

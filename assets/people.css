@@ -1,0 +1,58 @@
+.people-hero { min-height: calc(100svh - 112px); display: grid; grid-template-columns: .72fr 1.5fr; gap: 65px; align-items: center; padding-block: 55px 80px; }
+.people-heading h1 { font-size: clamp(48px, 5vw, 76px); line-height: 1.06; }
+.people-heading p { margin-top: 30px; max-width: 28ch; font-size: 17px; }
+.people-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: start; }
+.person-link { display: block; min-width: 0; }
+.person-link:nth-child(1) { margin-top: 85px; }
+.person-link:nth-child(3) { margin-top: 45px; }
+.person-frame { overflow: hidden; height: clamp(290px, 38svh, 510px); background: var(--paper); }
+.person-frame img { height: 100%; width: 100%; object-fit: cover; object-position: center 35%; filter: grayscale(1); transition: filter .3s ease, transform .3s ease; }
+.person-frame.associate-image-cate-hutchins-emery img { transform: scale(1.2); transform-origin: center 65%; }
+.person-link:hover .person-frame img, .person-link:focus-visible .person-frame img { filter: grayscale(0); }
+.person-name { display: flex; justify-content: space-between; gap: 12px; align-items: start; margin-top: 20px; }
+.person-name h2 { font-size: clamp(21px, 1.8vw, 28px); line-height: 1.2; text-align: left; }
+.person-name svg { color: var(--gold); width: 23px; height: 23px; transition: transform .2s; }
+.person-link:hover svg { transform: translateX(4px); }
+.person-link > p { margin-top: 9px; font-size: 13px; line-height: 1.6; }
+.people-interactive .people-fallback { display: none; }
+.person-dialog { width: min(1120px, calc(100% - 56px)); max-height: 90svh; padding: 0; border: 0; border-radius: 0; color: var(--navy); background: var(--paper); overflow: hidden; }
+.person-dialog::backdrop { background: rgb(3 31 64 / 90%); }
+.person-dialog-layout { display: grid; grid-template-columns: .78fr 1.22fr; max-height: 90svh; }
+.dialog-photo { overflow: hidden; background: var(--navy); }
+.dialog-photo img { width: 100%; height: 100%; min-height: 540px; object-fit: cover; object-position: center 35%; filter: grayscale(1); }
+.dialog-bio { padding: 65px 50px 50px; overflow-y: auto; overscroll-behavior: contain; }
+.dialog-bio h2 { font-size: clamp(30px, 3vw, 44px); line-height: 1.12; margin-bottom: 26px; }
+.dialog-bio p { font-size: 16px; line-height: 1.8; }
+.dialog-bio p + p { margin-top: 20px; }
+.dialog-close { position: absolute; right: 14px; top: 14px; z-index: 2; display: grid; place-items: center; border: 0; background: var(--navy); color: var(--paper); width: 42px; height: 42px; }
+.dialog-close svg { width: 23px; height: 23px; }
+.dialog-close:hover { color: var(--gold); }
+
+@media (max-width: 1100px) {
+  .people-hero { grid-template-columns: 1fr; gap: 45px; }
+  .people-heading { display: flex; gap: 70px; align-items: end; justify-content: space-between; }
+  .people-heading h1 br { display: none; }
+  .people-heading h1 { font-size: 56px; }
+  .people-heading p { max-width: 34ch; margin-top: 0; }
+  .person-frame { height: clamp(310px, 42svh, 470px); }
+  .person-link:nth-child(1) { margin-top: 45px; }
+  .person-link:nth-child(3) { margin-top: 25px; }
+}
+@media (max-width: 700px) {
+  .people-hero { min-height: auto; padding-block: 36px 65px; gap: 35px; }
+  .people-heading { display: block; }
+  .people-heading h1 { font-size: 44px; }
+  .people-heading p { font-size: 16px; margin-top: 24px; max-width: 36ch; }
+  .people-gallery { grid-auto-flow: column; grid-auto-columns: min(78vw, 380px); grid-template-columns: none; gap: 20px; overflow-x: auto; width: calc(100% + var(--gutter)); padding-right: var(--gutter); padding-bottom: 20px; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+  .person-link { scroll-snap-align: start; }
+  .person-link:nth-child(n) { margin-top: 0; }
+  .person-frame { height: min(47svh, 430px); min-height: 300px; }
+  .person-name h2 { font-size: 25px; }
+  .person-dialog { width: calc(100% - 28px); }
+  .person-dialog-layout { grid-template-columns: 1fr; grid-template-rows: min(25svh, 220px) minmax(0, 1fr); height: 90svh; }
+  .dialog-photo img { min-height: 0; object-position: center 10%; }
+  .dialog-photo.associate-image-cate-hutchins-emery img { transform: scale(1.2); transform-origin: center 60%; }
+  .dialog-bio { padding: 30px 24px; }
+  .dialog-bio h2 { font-size: 30px; }
+  .dialog-bio p { font-size: 15px; }
+}

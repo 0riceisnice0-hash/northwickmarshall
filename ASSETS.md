@@ -20,6 +20,23 @@ Final prompt:
 
 ## Brand and typography
 
-The provisional SVG mark follows the geometry and colours in Ben's screenshot. It should be replaced with the original brand asset when supplied.
+The SVG mark was redrawn against Ben's original screenshot on 10 November 2026. Its side diamonds are separated, its crossing lines have the reference's interwoven gaps, and its stroke weight is increased. `mark.svg` is the inverse version for navy surfaces; `favicon.svg` uses navy outlines for a light surface.
 
-Libre Caslon Display and DM Sans are loaded from Google Fonts under their respective open font licences.
+DM Sans is loaded from Google Fonts under its open font licence. The wordmark uses Georgia.
+
+## Supplied associate portraits
+
+Ben, Rebecca and Cate's photographs were supplied by the user on 10 November 2026 and copied without altering the files:
+
+- `assets/people/ben.png` — supplied `Ben.png`.
+- `assets/people/rebecca.jpg` — supplied `Rebecca.jpg`.
+- `assets/people/cate.jpg` — supplied `Cate.jpg`.
+
+Consistent portrait framing is applied in CSS. Cate's photograph uses a tighter CSS crop to reduce the empty space above her head. The gallery renders the supplied photographs in monochrome, returning to their original colours on hover or focus. No faces or photographic details were generated or retouched.
+
+## Visual references
+
+The associates composition was informed by references found through image search, then inspected directly. Only the user's portraits are used in the site:
+
+- 5S Content team composition by Pier-Luc Cossette: https://plcossette.com/projects/5s-content
+- Portrait-led team gallery featured by Awwwards: https://www.awwwards.com/inspiration/team-heights-agency
