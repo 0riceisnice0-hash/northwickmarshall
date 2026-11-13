@@ -24,7 +24,7 @@ if (personLinks.length && biographies.length) {
   document.body.classList.add('people-interactive');
   personLinks.forEach(link => {
     link.addEventListener('pointerenter', event => {
-      if (event.pointerType !== 'touch') selectPerson(link.dataset.person);
+      if (event.pointerType !== 'touch' && !document.body.classList.contains('people-honeycomb')) selectPerson(link.dataset.person);
     });
     link.addEventListener('focus', () => selectPerson(link.dataset.person));
     link.addEventListener('click', event => {
@@ -39,3 +39,22 @@ if (personLinks.length && biographies.length) {
   selectFromHash();
   window.addEventListener('hashchange', selectFromHash);
 }
+
+const layoutLinks = [...document.querySelectorAll('[data-layout]')];
+function applyLayout() {
+  const version = new URL(window.location.href).searchParams.get('version') === '2' ? '2' : '1';
+  document.body.classList.toggle('people-honeycomb', version === '2');
+  layoutLinks.forEach(link => {
+    if (link.dataset.layout === version) link.setAttribute('aria-current', 'true');
+    else link.removeAttribute('aria-current');
+  });
+}
+layoutLinks.forEach(link => link.addEventListener('click', event => {
+  event.preventDefault();
+  const url = new URL(window.location.href);
+  url.searchParams.set('version', link.dataset.layout);
+  window.history.pushState({}, '', url);
+  applyLayout();
+}));
+window.addEventListener('popstate', applyLayout);
+applyLayout();

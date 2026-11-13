@@ -36,12 +36,12 @@ const people = [
     ],
   },
   {
-    name: 'Lorem ipsum', slug: 'associate-four', role: 'Lorem ipsum dolor sit amet',
+    name: 'Matt Smith', slug: 'associate-four', role: 'Lorem ipsum dolor sit amet',
     image: 'people/placeholder.svg', width: 600, height: 800,
     paragraphs: [longer, lorem],
   },
   {
-    name: 'Dolor sit amet', slug: 'associate-five', role: 'Consectetur adipiscing elit',
+    name: 'Craig Charles', slug: 'associate-five', role: 'Consectetur adipiscing elit',
     image: 'people/placeholder.svg', width: 600, height: 800,
     paragraphs: [longer, lorem],
   },
@@ -109,7 +109,7 @@ for (const service of services) {
 }
 pages['associates.html'] = {
   title: 'Our associates', active: 'associates',
-  content: `<section class="people-hero wrap"><div class="people-heading"><h1>Our<br> <span class="accent">associates</span></h1><p>Different experience. A shared commitment to your business. Meet the people behind Northwick Marshall.</p></div><div class="people-stage"><div class="people-gallery">${people.map((person, index) => `<a class="person-link person-link-${person.slug}" href="#${person.slug}" data-person="${person.slug}" aria-controls="${person.slug}" aria-label="About ${person.name}"><div class="person-frame associate-image-${person.slug}"><img src="assets/${person.image}" alt="" width="${person.width}" height="${person.height}" fetchpriority="${index === 0 ? 'high' : 'auto'}"></div><div class="person-name"><h2>${person.name}</h2>${arrow}</div><p>${person.role}</p></a>`).join('')}</div>
+  content: `<section class="people-hero wrap"><div class="people-versions" role="group" aria-label="Associate layout"><a href="associates.html?version=1" data-layout="1" aria-current="true">Version 1</a><a href="associates.html?version=2" data-layout="2">Version 2</a></div><div class="people-heading"><h1>Our<br> <span class="accent">associates</span></h1><p>Different experience. A shared commitment to your business. Meet the people behind Northwick Marshall.</p></div><div class="people-stage"><div class="people-gallery">${people.map((person, index) => `<a class="person-link person-link-${person.slug}" href="#${person.slug}" data-person="${person.slug}" aria-controls="${person.slug}" aria-label="About ${person.name}"><div class="person-frame associate-image-${person.slug}"><img src="assets/${person.image}" alt="" width="${person.width}" height="${person.height}" fetchpriority="${index === 0 ? 'high' : 'auto'}"></div><div class="person-name"><h2>${person.name}</h2>${arrow}</div><p>${person.role}</p></a>`).join('')}</div>
   <div class="people-biographies">${people.map(person => `<article class="person-biography" id="${person.slug}" aria-labelledby="bio-title-${person.slug}"><h2 id="bio-title-${person.slug}">${person.name}</h2>${person.paragraphs.map(paragraph => `<p>${paragraph}</p>`).join('')}</article>`).join('')}</div></div></section>${cta()}`,
 };
 pages['contact.html'] = {
@@ -128,7 +128,7 @@ for (const [path, page] of Object.entries(pages)) {
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#031f40"><meta name="robots" content="noindex,nofollow">
 <title>${page.title} | Northwick Marshall</title><meta name="description" content="Northwick Marshall Consulting — consultancy for small and medium businesses. Diagnose, Design & Deliver, Partner and Transform.">
 <meta property="og:title" content="${page.title} | Northwick Marshall"><meta property="og:description" content="Smart business support. Clarity, direction and a partnership for your next chapter."><meta property="og:type" content="website"><meta property="og:image" content="https://0riceisnice0-hash.github.io/northwickmarshall/assets/london-dusk.jpg">
-<link rel="icon" href="assets/favicon.svg?v=5" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/styles.css?v=8"><script src="assets/site.js?v=3" defer></script>${path === 'index.html' ? '<link rel="stylesheet" href="assets/home.css?v=7"><script src="assets/home.js?v=6" defer></script>' : ''}${path === 'associates.html' ? '<link rel="stylesheet" href="assets/people.css?v=10"><script src="assets/people.js?v=8" defer></script>' : ''}
+<link rel="icon" href="assets/favicon.svg?v=5" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/styles.css?v=8"><script src="assets/site.js?v=3" defer></script>${path === 'index.html' ? '<link rel="stylesheet" href="assets/home.css?v=7"><script src="assets/home.js?v=6" defer></script>' : ''}${path === 'associates.html' ? '<link rel="stylesheet" href="assets/people.css?v=11"><script src="assets/people.js?v=9" defer></script>' : ''}
 </head><body class="page-${path.replace('.html', '')}"><a class="skip-link" href="#main">Skip to content</a>${nav(page.active)}<main id="main">${page.content}</main>${footer(path === 'index.html')}</body></html>\n`);
 }
 await writeFile(new URL('.nojekyll', out), '');
