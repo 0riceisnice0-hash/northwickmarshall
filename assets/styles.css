@@ -7,7 +7,8 @@
   --heading: clamp(36px, 4vw, 56px);
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+html { scrollbar-width: none; scroll-behavior: smooth; scroll-padding-top: 120px; }
+::-webkit-scrollbar { display: none; }
 body { margin: 0; background: var(--navy); color: var(--paper); font-family: 'DM Sans', Arial, sans-serif; font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; font-variant-numeric: tabular-nums; }
 h1, h2, h3, p, figure { margin: 0; }
 h1, h2, h3 { font-weight: 500; letter-spacing: 0; text-wrap: balance; }

@@ -38,7 +38,7 @@ The hero, service introduction and company section each occupy exactly one stabl
 
 ## Associates experience
 
-The associates page uses a horizontally scrollable, staggered monochrome portrait composition with colour returning on hover or keyboard focus. Hovering, focusing or tapping a portrait reveals the full supplied biography directly beneath the gallery, with no additional action. The selected portrait lifts slightly and stays in colour; the biography enters with a short fade and upward movement. Desktop biographies share a stable reading area to prevent page jumps, while phone layouts flow to fit the selected text. Reduced-motion preferences disable the text animation. Without JavaScript, all biographies remain available in normal document flow. Direct links select the corresponding person's inline profile.
+The associates page uses a five-column, staggered monochrome portrait composition on desktop and a three-column grid on phones with colour returning on hover or keyboard focus. Hovering, focusing or tapping a portrait reveals the full supplied biography directly beneath the gallery, with no additional action. The selected portrait lifts slightly and stays in colour; the biography enters with a short fade and upward movement. All five portraits are visible without a horizontal scroller. Scrollbars are hidden while normal page scrolling remains available. Desktop biographies share a stable reading area to prevent page jumps, while phone layouts flow to fit the selected text. Reduced-motion preferences disable the text animation. Without JavaScript, all biographies remain available in normal document flow. Direct links select the corresponding person's inline profile.
 
 ## Prototype status
 
