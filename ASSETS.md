@@ -40,3 +40,5 @@ The associates composition was informed by references found through image search
 
 - 5S Content team composition by Pier-Luc Cossette: https://plcossette.com/projects/5s-content
 - Portrait-led team gallery featured by Awwwards: https://www.awwwards.com/inspiration/team-heights-agency
+
+- `assets/people/placeholder.svg`: neutral vector silhouette authored for the two additional associate placeholders; no stock or invented identities.

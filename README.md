@@ -38,14 +38,14 @@ The hero, service introduction and company section each occupy exactly one stabl
 
 ## Associates experience
 
-The associates page uses a staggered, monochrome portrait composition with colour returning on hover or keyboard focus. Hovering, focusing or tapping a portrait reveals the full supplied biography directly beneath the gallery, with no additional action. The selected portrait lifts slightly and stays in colour; the biography enters with a short fade and upward movement. Desktop biographies share a stable reading area to prevent page jumps, while phone layouts flow to fit the selected text. Reduced-motion preferences disable the text animation. Without JavaScript, all biographies remain available in normal document flow. Direct links select the corresponding person's inline profile.
+The associates page uses a horizontally scrollable, staggered monochrome portrait composition with colour returning on hover or keyboard focus. Hovering, focusing or tapping a portrait reveals the full supplied biography directly beneath the gallery, with no additional action. The selected portrait lifts slightly and stays in colour; the biography enters with a short fade and upward movement. Desktop biographies share a stable reading area to prevent page jumps, while phone layouts flow to fit the selected text. Reduced-motion preferences disable the text animation. Without JavaScript, all biographies remain available in normal document flow. Direct links select the corresponding person's inline profile.
 
 ## Prototype status
 
 - The headline, introduction, company copy and associate biographies use Ben's supplied feedback. Service summaries and the detailed Diagnose paragraph originate in the supplied screenshots. The public copy spells out small and medium businesses rather than using the acronym.
 - Additional paragraphs intentionally use Latin placeholder copy; this includes the Privacy policy, which is a layout draft, not a completed policy.
 - WhatsApp/phone is TBC internally and displays a short Latin placeholder. No invented number or dead WhatsApp link is published.
-- Ben Thompson, Rebecca Wood and Cate Hutchins-Emery have complete supplied profiles. Only these three named people appear; the extra unnamed placeholder was removed.
+- Ben Thompson, Rebecca Wood and Cate Hutchins-Emery have complete supplied profiles. Two additional associate slots use Latin placeholder names and biographies with neutral SVG portrait silhouettes until their details are supplied.
 - The enquiry form prepares a `mailto:` message in the visitor's own email app. It does not submit data to a backend or claim an email has been sent.
 - `northwickmarshall.co.uk` is shown as the intended business domain. No CNAME or DNS change is made; the preview stays at the GitHub Pages address.
 - All pages carry `noindex,nofollow`, and robots.txt disallows crawling while this is a draft. Remove those only after approving final copy and launch details.

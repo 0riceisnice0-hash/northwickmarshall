@@ -14,7 +14,7 @@ const companyParagraphs = [
 const companyCopy = () => companyParagraphs.map(text => `<p>${text}</p>`).join('');
 const people = [
   {
-    name: 'Ben Thompson', slug: 'ben-thompson', image: 'people/ben.png', width: 780, height: 1080,
+    role: 'Business analysis & project delivery', name: 'Ben Thompson', slug: 'ben-thompson', image: 'people/ben.png', width: 780, height: 1080,
     paragraphs: [
       'Ben Thompson is an experienced Business Analyst and Project Manager with over two decades of experience delivering change across the automotive, financial services, travel, and retail sectors.',
       'A Principal Business Analyst for more than 20 years and the owner of Northwick Marshall Consulting since 2015, he has led more than 40 successfully delivered projects and initiatives for clients including Mercedes-Benz, Volkswagen Financial Services, Weatherbys Private Bank, ParcelForce Worldwide, Barclaycard Corporate, and Premier Inn.',
@@ -22,18 +22,28 @@ const people = [
     ],
   },
   {
-    name: 'Rebecca Wood', slug: 'rebecca-wood', image: 'people/rebecca.jpg', width: 391, height: 521,
+    role: 'Learning & development', name: 'Rebecca Wood', slug: 'rebecca-wood', image: 'people/rebecca.jpg', width: 391, height: 521,
     paragraphs: [
       'Rebecca Wood is a dynamic and results-driven learning and development consultant with a proven track record of leading transformational programmes across the UK and internationally. With deep expertise spanning multiple sectors, from housing and local government to automotive, finance, retail, and aviation, Rebecca has partnered with some of the world’s most respected organisations, including Clarion Housing, Orbit Housing, Vodafone, Unilever, Jaguar Land Rover, Mercedes-Benz, Royal Bank of Scotland, Network Rail, and South African Airways.',
       'As a specialist in behavioural change and performance coaching, Rebecca empowers individuals and teams to unlock their full potential and drive meaningful impact. Her strategic approach blends insight with action, helping organisations shift culture, strengthen leadership, and elevate performance.',
     ],
   },
   {
-    name: 'Cate Hutchins-Emery', slug: 'cate-hutchins-emery', image: 'people/cate.jpg', width: 1158, height: 1544,
+    role: 'Organisational development', name: 'Cate Hutchins-Emery', slug: 'cate-hutchins-emery', image: 'people/cate.jpg', width: 1158, height: 1544,
     paragraphs: [
       'Cate Hutchins-Emery brings over 25 years of experience in key roles spanning organisational and community development in the UK, Ireland and India. She has worked extensively across the charity, education, and business sectors and holds professional qualifications in mediation and business analysis.',
       'Cate excels in managing complex processes and workflows, collaborating with teams to cultivate a positive and productive culture. Her passion is empowering individuals to achieve their full potential through training, mentorship, and nurturing a supportive organisational environment.',
     ],
+  },
+  {
+    name: 'Lorem ipsum', slug: 'associate-four', role: 'Lorem ipsum dolor sit amet',
+    image: 'people/placeholder.svg', width: 600, height: 800,
+    paragraphs: [longer, lorem],
+  },
+  {
+    name: 'Dolor sit amet', slug: 'associate-five', role: 'Consectetur adipiscing elit',
+    image: 'people/placeholder.svg', width: 600, height: 800,
+    paragraphs: [longer, lorem],
   },
 ];
 const arrow = '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -99,7 +109,7 @@ for (const service of services) {
 }
 pages['associates.html'] = {
   title: 'Our associates', active: 'associates',
-  content: `<section class="people-hero wrap"><div class="people-heading"><h1>Our<br> <span class="accent">associates</span></h1><p>Different experience. A shared commitment to your business. Meet the people behind Northwick Marshall.</p></div><div class="people-stage"><div class="people-gallery">${people.map((person, index) => `<a class="person-link person-link-${person.slug}" href="#${person.slug}" data-person="${person.slug}" aria-controls="${person.slug}" aria-label="About ${person.name}"><div class="person-frame associate-image-${person.slug}"><img src="assets/${person.image}" alt="" width="${person.width}" height="${person.height}" fetchpriority="${index === 0 ? 'high' : 'auto'}"></div><div class="person-name"><h2>${person.name}</h2>${arrow}</div><p>${['Business analysis & project delivery', 'Learning & development', 'Organisational development'][index]}</p></a>`).join('')}</div>
+  content: `<section class="people-hero wrap"><div class="people-heading"><h1>Our<br> <span class="accent">associates</span></h1><p>Different experience. A shared commitment to your business. Meet the people behind Northwick Marshall.</p></div><div class="people-stage"><div class="people-gallery">${people.map((person, index) => `<a class="person-link person-link-${person.slug}" href="#${person.slug}" data-person="${person.slug}" aria-controls="${person.slug}" aria-label="About ${person.name}"><div class="person-frame associate-image-${person.slug}"><img src="assets/${person.image}" alt="" width="${person.width}" height="${person.height}" fetchpriority="${index === 0 ? 'high' : 'auto'}"></div><div class="person-name"><h2>${person.name}</h2>${arrow}</div><p>${person.role}</p></a>`).join('')}</div>
   <div class="people-biographies">${people.map(person => `<article class="person-biography" id="${person.slug}" aria-labelledby="bio-title-${person.slug}"><h2 id="bio-title-${person.slug}">${person.name}</h2>${person.paragraphs.map(paragraph => `<p>${paragraph}</p>`).join('')}</article>`).join('')}</div></div></section>${cta()}`,
 };
 pages['contact.html'] = {
@@ -118,7 +128,7 @@ for (const [path, page] of Object.entries(pages)) {
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#031f40"><meta name="robots" content="noindex,nofollow">
 <title>${page.title} | Northwick Marshall</title><meta name="description" content="Northwick Marshall Consulting — consultancy for small and medium businesses. Diagnose, Design & Deliver, Partner and Transform.">
 <meta property="og:title" content="${page.title} | Northwick Marshall"><meta property="og:description" content="Smart business support. Clarity, direction and a partnership for your next chapter."><meta property="og:type" content="website"><meta property="og:image" content="https://0riceisnice0-hash.github.io/northwickmarshall/assets/london-dusk.jpg">
-<link rel="icon" href="assets/favicon.svg?v=5" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/styles.css?v=7"><script src="assets/site.js?v=3" defer></script>${path === 'index.html' ? '<link rel="stylesheet" href="assets/home.css?v=7"><script src="assets/home.js?v=6" defer></script>' : ''}${path === 'associates.html' ? '<link rel="stylesheet" href="assets/people.css?v=8"><script src="assets/people.js?v=8" defer></script>' : ''}
+<link rel="icon" href="assets/favicon.svg?v=5" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/styles.css?v=7"><script src="assets/site.js?v=3" defer></script>${path === 'index.html' ? '<link rel="stylesheet" href="assets/home.css?v=7"><script src="assets/home.js?v=6" defer></script>' : ''}${path === 'associates.html' ? '<link rel="stylesheet" href="assets/people.css?v=9"><script src="assets/people.js?v=8" defer></script>' : ''}
 </head><body class="page-${path.replace('.html', '')}"><a class="skip-link" href="#main">Skip to content</a>${nav(page.active)}<main id="main">${page.content}</main>${footer(path === 'index.html')}</body></html>\n`);
 }
 await writeFile(new URL('.nojekyll', out), '');

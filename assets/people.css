@@ -1,10 +1,10 @@
 .people-hero { min-height: calc(100svh - 112px); display: grid; grid-template-columns: .72fr 1.5fr; gap: 65px; align-items: center; padding-block: 55px 80px; }
 .people-heading h1 { font-size: clamp(48px, 5vw, 76px); line-height: 1.06; }
 .people-heading p { margin-top: 30px; max-width: 28ch; font-size: 17px; }
-.people-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: start; }
-.person-link { display: block; min-width: 0; }
-.person-link:nth-child(1) { margin-top: 85px; }
-.person-link:nth-child(3) { margin-top: 45px; }
+.people-gallery { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 48px) / 3.15); gap: 24px; align-items: start; overflow-x: auto; padding-block: 8px 20px; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: var(--gold) var(--navy); }
+.person-link { display: block; min-width: 0; scroll-snap-align: start; }
+.person-link:nth-child(3n + 1) { margin-top: 85px; }
+.person-link:nth-child(3n) { margin-top: 45px; }
 .person-frame { overflow: hidden; height: clamp(290px, 38svh, 510px); background: var(--paper); transition: transform .3s ease; }
 .person-frame img { height: 100%; width: 100%; object-fit: cover; object-position: center 35%; filter: grayscale(1); transition: filter .3s ease, transform .3s ease; }
 .person-frame.associate-image-cate-hutchins-emery img { transform: scale(1.2); transform-origin: center 65%; }
@@ -43,15 +43,15 @@
   .people-heading h1 { font-size: 56px; }
   .people-heading p { max-width: 34ch; margin-top: 0; }
   .person-frame { height: clamp(310px, 42svh, 470px); }
-  .person-link:nth-child(1) { margin-top: 45px; }
-  .person-link:nth-child(3) { margin-top: 25px; }
+  .person-link:nth-child(3n + 1) { margin-top: 45px; }
+  .person-link:nth-child(3n) { margin-top: 25px; }
 }
 @media (max-width: 700px) {
   .people-hero { min-height: auto; padding-block: 36px 65px; gap: 35px; }
   .people-heading { display: block; }
   .people-heading h1 { font-size: 44px; }
   .people-heading p { font-size: 16px; margin-top: 24px; max-width: 36ch; }
-  .people-gallery { grid-auto-flow: column; grid-auto-columns: min(78vw, 380px); grid-template-columns: none; gap: 20px; overflow-x: auto; width: calc(100% + var(--gutter)); padding-right: var(--gutter); padding-bottom: 20px; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+  .people-gallery { grid-auto-flow: column; grid-auto-columns: min(78vw, 380px); grid-template-columns: none; gap: 20px; overflow-x: auto; width: calc(100% + var(--gutter)); padding-right: var(--gutter); padding-bottom: 20px; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: var(--gold) var(--navy); }
   .person-link { scroll-snap-align: start; }
   .person-link:nth-child(n) { margin-top: 0; }
   .person-frame { height: min(47svh, 430px); min-height: 300px; }
