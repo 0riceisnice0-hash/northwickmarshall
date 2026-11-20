@@ -95,6 +95,17 @@ nav > a[aria-current='page'], nav > a:not(.button):hover { color: var(--gold); }
 .closing-service-links { display: flex; flex-direction: column; align-items: start; gap: 6px; margin-top: 30px; }
 .closing-service-links .text-link { justify-content: space-between; min-width: 260px; }
 
+.team-contact .closing-content { align-items: start; }
+.team-contact .closing-details { padding-top: 6px; }
+.team-contact .closing-details h3 { margin-bottom: 14px; }
+.team-contact .closing-experience { max-width: 40ch; margin-bottom: 24px; }
+.team-contact .closing-email:focus-visible { outline-color: var(--navy); }
+.page-services .team-contact { padding-block: clamp(52px, 7vw, 96px); }
+
+@media (max-width: 700px) {
+  .team-contact .closing-details { padding-top: 0; }
+}
+
 /* Interior pages share the same type and spacing scale */
 .page-intro { padding-block: 76px 90px; }
 .page-intro h1 { max-width: 1300px; }

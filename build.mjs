@@ -76,6 +76,20 @@ function footer(compact = false) {
   return `<footer class="footer"><div class="wrap footer-main">${brand()}<div class="footer-links"><a href="about.html">About</a><a href="services.html">Services</a><a href="associates.html">Associates</a><a href="contact.html">Contact</a></div>${compact ? '' : '<a class="footer-email" href="mailto:northwickmarshall@gmail.com">northwickmarshall@gmail.com</a>'}</div><div class="wrap footer-bottom"><span>© ${new Date().getFullYear()} Northwick Marshall</span><span>northwickmarshall.co.uk</span><a href="privacy.html">Privacy policy</a></div></footer>`;
 }
 const cta = () => `<section class="cta"><div class="wrap closing-content"><div class="closing-copy"><h2>Let’s talk about<br> your business</h2><p>A health check, a strategic roadmap or support through a wider business change. Tell us what you want to work on.</p>${link('contact.html', 'Book a call', 'button button-dark')}<p class="closing-preparation">Tell us about your current challenge, the outcome you want and any key timescales.</p></div><div class="closing-details"><h3>Contact Ben</h3><p class="closing-experience">Business analysis and project delivery, backed by over 20 years of experience.</p><a class="closing-email" href="mailto:northwickmarshall@gmail.com">northwickmarshall@gmail.com${arrow}</a><div class="closing-service-links">${services.map(service => link(`${service.slug}.html`, service.name)).join('')}</div></div></div></section>`;
+const teamContact = () => `<section class="cta team-contact" aria-labelledby="team-contact-title">
+    <div class="wrap closing-content">
+      <div class="closing-copy">
+        <h2 id="team-contact-title">Let’s talk about your business</h2>
+        <p>Tell us what you’re working on, what you want to achieve and any key timescales.</p>
+        ${link('contact.html', 'Book a call', 'button button-dark')}
+      </div>
+      <div class="closing-details">
+        <h3>Contact Us</h3>
+        <p class="closing-experience">Our team brings more than 45 years of combined experience across business analysis, project delivery, learning and development, and organisational change.</p>
+        <a class="closing-email" href="mailto:northwickmarshall@gmail.com">northwickmarshall@gmail.com${arrow}</a>
+      </div>
+    </div>
+  </section>`;
 const office = () => `<figure class="office-image">${photo('office-concept.jpg', 'AI visualisation of a Northwick Marshall meeting room with brass signage on a navy wall')}</figure>`;
 
 function serviceList(items = services, heading = 'h3') {
@@ -107,7 +121,7 @@ pages['about.html'] = {
 };
 pages['services.html'] = {
   title: 'Our services', active: 'services',
-  content: `${intro('Clarity to begin<br><span class="accent">Confidence to grow</span>', introduction)}<section class="section service-directory"><div class="wrap">${serviceList(services, 'h2')}</div></section><section class="section service-explanation"><div class="wrap reading-split"><h2>Start with<br>a clearer picture</h2><div><p class="lead">${services[0].description}</p>${link('diagnose.html', 'Explore Diagnose')}</div></div></section>${approach()}${cta()}`,
+  content: `${intro('Clarity to begin<br><span class="accent">Confidence to grow</span>', introduction)}<section class="section service-directory"><div class="wrap">${serviceList(services, 'h2')}</div></section><section class="section service-explanation"><div class="wrap reading-split"><h2>Start with<br>a clearer picture</h2><div><p class="lead">${services[0].description}</p>${link('diagnose.html', 'Explore Diagnose')}</div></div></section>${teamContact()}`,
 };
 for (const service of services) {
   const title = service.slug === 'design-deliver' ? 'Design<br>& Deliver' : service.slug === 'transform' ? 'Partner and<br> Transform' : service.name;
@@ -123,20 +137,7 @@ pages['associates.html'] = {
   <div class="people-gallery" id="people-gallery">${people.map((person, index) => `<a class="person-link person-link-${person.slug}" href="#${person.slug}" data-person="${person.slug}" aria-controls="${person.slug}" aria-label="About ${person.name}"><div class="person-frame associate-image-${person.slug}"><img src="assets/${person.image}" alt="" width="${person.width}" height="${person.height}" fetchpriority="${index === 0 ? 'high' : 'auto'}"></div><div class="person-name"><h2>${person.name}</h2>${arrow}</div><p>${person.role}</p></a>`).join('')}</div>
   <button class="people-step" type="button" data-direction="1" aria-label="Next associate" aria-controls="people-gallery" hidden>${arrow}</button>
   <p class="people-status" role="status"></p></div>
-  <div class="people-biographies">${people.map(person => `<article class="person-biography" id="${person.slug}" aria-labelledby="bio-title-${person.slug}"><h2 id="bio-title-${person.slug}">${person.name}</h2>${person.paragraphs.map(paragraph => `<p>${paragraph}</p>`).join('')}</article>`).join('')}</div></div></section><section class="cta associates-contact" aria-labelledby="associates-contact-title">
-    <div class="wrap closing-content">
-      <div class="closing-copy">
-        <h2 id="associates-contact-title">Let’s talk about your business</h2>
-        <p>Tell us what you’re working on, what you want to achieve and any key timescales.</p>
-        ${link('contact.html', 'Book a call', 'button button-dark')}
-      </div>
-      <div class="closing-details">
-        <h3>Contact Us</h3>
-        <p class="closing-experience">Our team brings more than 45 years of combined experience across business analysis, project delivery, learning and development, and organisational change.</p>
-        <a class="closing-email" href="mailto:northwickmarshall@gmail.com">northwickmarshall@gmail.com${arrow}</a>
-      </div>
-    </div>
-  </section>`,
+  <div class="people-biographies">${people.map(person => `<article class="person-biography" id="${person.slug}" aria-labelledby="bio-title-${person.slug}"><h2 id="bio-title-${person.slug}">${person.name}</h2>${person.paragraphs.map(paragraph => `<p>${paragraph}</p>`).join('')}</article>`).join('')}</div></div></section>${teamContact()}`,
 };
 pages['contact.html'] = {
   title: 'Contact us', active: 'contact',
@@ -154,7 +155,7 @@ for (const [path, page] of Object.entries(pages)) {
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#031f40"><meta name="robots" content="noindex,nofollow">
 <title>${page.title} | Northwick Marshall</title><meta name="description" content="Northwick Marshall Consulting — consultancy for small and medium businesses. Diagnose, Design & Deliver, Partner and Transform.">
 <meta property="og:title" content="${page.title} | Northwick Marshall"><meta property="og:description" content="Smart business support. Clarity, direction and a partnership for your next chapter."><meta property="og:type" content="website"><meta property="og:image" content="https://0riceisnice0-hash.github.io/northwickmarshall/assets/london-dusk.jpg">
-<link rel="icon" href="assets/favicon.svg?v=5" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/styles.css?v=9"><script src="assets/site.js?v=3" defer></script>${path === 'index.html' ? '<link rel="stylesheet" href="assets/home.css?v=7"><script src="assets/home.js?v=6" defer></script>' : ''}${path === 'associates.html' ? '<link rel="stylesheet" href="assets/people.css?v=12"><script type="module" src="assets/people.js?v=10"></script>' : ''}
+<link rel="icon" href="assets/favicon.svg?v=5" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/styles.css?v=10"><script src="assets/site.js?v=3" defer></script>${path === 'index.html' ? '<link rel="stylesheet" href="assets/home.css?v=7"><script src="assets/home.js?v=6" defer></script>' : ''}${path === 'associates.html' ? '<link rel="stylesheet" href="assets/people.css?v=13"><script type="module" src="assets/people.js?v=10"></script>' : ''}
 </head><body class="page-${path.replace('.html', '')}"><a class="skip-link" href="#main">Skip to content</a>${nav(page.active)}<main id="main">${page.content}</main>${footer(path === 'index.html')}</body></html>\n`);
 }
 await writeFile(new URL('.nojekyll', out), '');
