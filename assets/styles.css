@@ -136,6 +136,7 @@ nav > a[aria-current='page'], nav > a:not(.button):hover { color: var(--gold); }
 .contact-details h3 { color: var(--gold); font-size: 15px; margin-bottom: 10px; }
 .contact-details a { display: flex; gap: 20px; align-items: center; overflow-wrap: anywhere; }
 .contact-details a svg { width: 21px; }
+.contact-details .whatsapp-link { margin-top: 8px; }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .field { display: flex; flex-direction: column; margin-bottom: 26px; gap: 10px; }
 .field label { font-size: 14px; }
